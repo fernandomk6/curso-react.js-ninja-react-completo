@@ -7,22 +7,15 @@
   <title>Hello World React</title>
 </head>
 <body>
-  <h1>Hello World Estático</h1>
-  <div id="app">
-
-  </div>
+  <div id="app"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js" integrity="sha512-bPEAI/w5skhB3Kchsnt+R/e9Bvaije6PJhB5FBy6CRzUC9dB52NS9e7OK2LJQfdOUJdTkIMvA+ioWjEMYv37Jg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js" integrity="sha512-SYAv6yPI2ytwfZd1nrA0yA/HxtRk+jcIhjm0LIxPHFM7mkcCQo+/YFivrio49aHGOYKE0hYgwmRPZzoXQQmbQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js" integrity="sha512-48/31uDtnmMX9RFC1g295vKWwNHG6zDM24c0LBopZTe1HsuoV5HUhtMXKAuDLxmeoFYiWc7tlHkheLtdV6w0Tw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/babel">
     const app = document.querySelector('#app')
-    const item1 =  React.createElement('li', { key: 1 }, 'Item1')
-    const item2 = React.createElement('li', { key: 2 }, 'Item2')
-
-    const items = React.createElement('ul', null, [item1, item2])
-
-    ReactDOM.render(items, app)
+    const h1 = <h1>Hello World React</h1>
+    ReactDOM.render(h1, app)
   </script>
 </body>
 </html>
