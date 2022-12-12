@@ -13,9 +13,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js" integrity="sha512-SYAv6yPI2ytwfZd1nrA0yA/HxtRk+jcIhjm0LIxPHFM7mkcCQo+/YFivrio49aHGOYKE0hYgwmRPZzoXQQmbQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js" integrity="sha512-48/31uDtnmMX9RFC1g295vKWwNHG6zDM24c0LBopZTe1HsuoV5HUhtMXKAuDLxmeoFYiWc7tlHkheLtdV6w0Tw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/babel">
-    const app = document.querySelector('#app')
-    const h1 = <h1>Hello World React</h1>
-    ReactDOM.render(h1, app)
+    const Title = React.createClass({
+      render() {
+        return (
+          <h1>Hello World <em>React</em></h1>
+        )
+      }
+    })
+
+    ReactDOM.render(
+      <Title />,
+      document.querySelector('#app')
+    )
   </script>
 </body>
 </html>
