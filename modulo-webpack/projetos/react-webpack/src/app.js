@@ -1,7 +1,12 @@
 'use strict'
 
-function sum (val1, val2) {
-  return val1 + val2
-}
+const React = require('react')
 
-module.exports = sum
+const Title = React.createClass({
+  render() {
+    return React.createElement('h1', null, 'React Webpack')
+  }
+})
+
+module.exports = Title
+
