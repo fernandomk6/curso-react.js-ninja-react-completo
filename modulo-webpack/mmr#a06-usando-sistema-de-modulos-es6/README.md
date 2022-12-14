@@ -89,3 +89,8 @@ Ao invés de usar module.exports usaremos *export default*
 
 Caso não especifique um caminho, o import irá buscar uma dependencia na *node_module*.
 
+- `import` usando `shorthand notation` para o método render do DOM
+
+`import React from 'react'` Se não for passaod `./` ou um caminho de diretorio,
+o javascript irá buscar um diretorio com esse nome na node_module.
+
