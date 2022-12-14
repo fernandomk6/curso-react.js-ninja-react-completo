@@ -63,8 +63,8 @@ export default const manoel = 'manoel'
 
 // outro arquivo js
 
-import { fernando, pedro } from './user'
-import fred from './user' // não lança erro pois existe um export default em user.js
+// não lança erro pois existe um export default em user.js
+import fred, { fernando, pedro } from './user' 
 
 console.log(fernando) // fernando
 console.log(pedro) // pedro
@@ -74,5 +74,26 @@ console.log(fred) // manoel
 ## Resumindo
 
 import sem chaves irá buscar o valor do export default.
-import com chaves irá buscar por um export nomeado (export sem default), e o nome do import deve ser igual
-ao nome do arquivo no export.
+import com chaves irá buscar por um export nomeado (export sem default), e o nome do import 
+deve ser igual ao nome do arquivo no export.
+
+## Extra
+
+### Operador as
+
+Também é possível renomear um export nomeado, para evitar colisões de nomeclatura.
+
+- `import { export as alias } from "module-name"`
+
+O que vier dpois do operador `as`, será o nome da variavel nesse arquivo. O nome antes do `as`,
+é o nome exato da variavel que foi exportada.
+
+### Operador *
+
+Também é possível importar todos os export nomeados de uma vez, sem a necessidade de ficar,
+especificando os nomes de cada variavel exportada.
+
+`import * from 'module-name'`
+
+O `*` irá importar todas as variaveis nomeadas que foram exportadas com o mesmo nome que 
+foram exportadas.
