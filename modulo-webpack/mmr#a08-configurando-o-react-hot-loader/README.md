@@ -66,3 +66,36 @@ module.exports = {
 - Crar a entrada `start` no package.json
 
 Faremos isso para não depender de ficar sempre rodando o webppack-dev-server.
+
+```js
+// server.js
+
+'use strict'
+
+const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
+const config = require('./webpack.config')
+
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true,
+  stats: { colors: true },
+}).listen(3000, (err) => {
+  if (err) {
+    return console.log(err)
+  }
+
+  console.log('listening on http://localhost:3000')
+})
+```
+
+```json
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "start": "node server.js" // New
+  }
+}
+```
