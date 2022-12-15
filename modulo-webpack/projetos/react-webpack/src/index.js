@@ -5,7 +5,7 @@ import React from 'react'
 import { render } from 'react-dom'
 
 render(
-  React.createElement(Title),
+  <Title />,
   document.querySelector('[data-js="app"]')
 )
 
