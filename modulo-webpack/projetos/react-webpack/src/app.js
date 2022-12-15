@@ -3,7 +3,7 @@
 import React from 'react'
 
 const App = React.createClass({
-  render() {
+  render () {
     return <h1>React Webpack</h1>
   }
 })
