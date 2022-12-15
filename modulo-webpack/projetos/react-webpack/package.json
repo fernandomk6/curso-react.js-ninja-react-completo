@@ -20,7 +20,8 @@
     "standard": "^16.0.4",
     "standard-loader": "^4.0.0",
     "webpack": "^1.15.0",
-    "webpack-dev-server": "^1.16.5"
+    "webpack-dev-server": "^1.16.5",
+    "webpack-validator": "^3.0.1"
   },
   "dependencies": {
     "react": "15.4",
