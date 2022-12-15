@@ -1,1 +1,0 @@
-# Colocando hot loader para funcionar 

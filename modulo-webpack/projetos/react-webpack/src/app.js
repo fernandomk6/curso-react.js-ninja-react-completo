@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-const Title = React.createClass({
+const App = React.createClass({
   render() {
-    return <h1>React Webpak</h1>
+    return <h1>React Webpack</h1>
   }
 })
 
-export default Title
+export default App

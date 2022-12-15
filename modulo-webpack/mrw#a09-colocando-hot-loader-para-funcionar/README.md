@@ -1,3 +1,8 @@
+# Colocando hot loader para funcionar 
+
+Configuração do `react-hot-loader` no index.js
+
+```js
 'use strict'
 
 import App from './app'
@@ -22,3 +27,4 @@ if (module.hot) {
     renderApp(NextApp)
   })
 }
+```
