@@ -3,8 +3,8 @@
 import React from 'react'
 import Title from './title'
 
-var App = React.createClass({
-  render: function () {
+class App extends React.Component {
+  render () {
     return (
       <div>
         <Title
@@ -14,6 +14,6 @@ var App = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default App
