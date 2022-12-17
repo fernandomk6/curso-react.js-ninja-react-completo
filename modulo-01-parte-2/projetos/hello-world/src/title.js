@@ -3,9 +3,15 @@
 import React from 'react'
 
 const Title = React.createClass({
+  getDefaultProps () {
+    return {
+      name: 'Desconhecido',
+      lastname: 'Sem sobrenome'
+    }
+  },
   render () {
     return (
-      <h1>Olá eu sou o {this.props.name} e tenho {this.props.age} anos</h1>
+      <h1>Olá eu sou o {`${this.props.name} ${this.props.lastname}`}!</h1>
     )
   }
 })
