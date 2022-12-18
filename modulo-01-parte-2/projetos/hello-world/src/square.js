@@ -12,6 +12,6 @@ const Square = (props) => {
   )
 }
 
-Square.defaultProps = { color: 'black' }
+Square.defaultProps = { color: 'red' }
 
 export default Square

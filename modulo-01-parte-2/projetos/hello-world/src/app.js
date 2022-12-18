@@ -7,9 +7,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        {['blue', 'red', 'yellow', 'green'].map((color, index) => (
-          <Square color={color} key={index} />
-        ))}
+        <Square />
       </div>
     )
   }
