@@ -1,13 +1,14 @@
 'use strict'
 
-import React from 'react'
-import Square from './square'
+import React, { Component } from 'react'
+import Button from './button'
 
-class App extends React.Component {
+class App extends Component {
   render () {
     return (
       <div>
-        <Square />
+        <h1>React App</h1>
+        <Button>Clique aqui</Button>
       </div>
     )
   }
