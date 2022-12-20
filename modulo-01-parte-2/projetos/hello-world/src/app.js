@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import LikeButton from './likeButton'
+import SearchButton from './searchButton'
 
 class App extends Component {
   render () {
@@ -9,6 +10,7 @@ class App extends Component {
       <div>
         <h1>React App</h1>
         <LikeButton />
+        <SearchButton />
       </div>
     )
   }

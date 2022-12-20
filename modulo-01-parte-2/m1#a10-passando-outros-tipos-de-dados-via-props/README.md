@@ -63,3 +63,16 @@ const name = 'Fernando'
 <Title name={name}/>
 ```
 
+## Avançado
+
+As props sempre fazem referencia a dados do contexto atual. Caso o dado passado não esteja relacionado
+necessáriamente ao escopo atual aonde o componente é chamado, ao inves de passar um valor como prop,
+sete esse valor diretamente no componente dentro da função `render`.
+
+Props são dados do componente pai que são passados para o filho, caso o filho não precise,
+receber esses dados do pai, não é necessario o uso de props.
+
+Use props apenas para passar dados dinamicos, referente ao pai. O pai vai dizer como o componente deve
+ser renderizado, apenas quando os dados dependerem do pai. Ou, for usado por outros componentes filhos.
+
+Caso seja um dado especifico do componente, declare-o dentro do componente e não passe-o como props.

@@ -130,3 +130,41 @@ que irá setar o que ele vai fazer ao ser clicado, suas class, e seu conteúdo (
 
 Tente sempre fazer componentes genéricos, que possam ser reaproveitados em diferentes contextos,
 como esse botão.
+
+## Compondo botões
+
+```js
+// button 
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>{props.children}</button>
+  )
+}
+
+// likeButton
+const LikeButton = (props) => {
+  return (
+    <Button handleClick={() => alert('curtiu')}>Curtir</Button>
+  )
+}
+
+// searchButton
+const SearchButton = (props) => {
+  return (
+    <Button handleClick={() => alert('pesquisou')}>Pesquisar</Button>
+  )
+}
+
+// app
+class App extends Component {
+  render () {
+    return (
+      <div>
+        <h1>React App</h1>
+        <LikeButton />
+        <SearchButton />
+      </div>
+    )
+  }
+}
+```

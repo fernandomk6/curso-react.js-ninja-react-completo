@@ -3,9 +3,9 @@
 import React from 'react'
 import Button from './button'
 
-const LikeButton = () => {
+const LikeButton = (props) => {
   return (
-    <Button>Curtir</Button>
+    <Button handleClick={() => alert('curtiu')}>Curtir</Button>
   )
 }
 
