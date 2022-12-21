@@ -1,35 +1,33 @@
 'use strict'
 
-import React, { Component } from 'react'
-import Timer from './timer'
+import React from 'react'
+import Component from './component'
 
-class App extends Component {
+class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      showTimer: true,
-      time: 0
+      name: 'fernando'
     }
-    console.log('constructor')
+    console.log('constructor App')
   }
 
   componentWillMount () {
-    console.log('componentWillMount')
+    console.log('componentWillMount App')
   }
 
   componentDidMount () {
-    console.log('componentDidMount')
+    console.log('componentDidMount App')
   }
 
   render () {
-    console.log('render')
+    console.log('render App')
     return (
       <div>
         <h1>Olá</h1>
-        {this.state.showTimer && <Timer time={this.state.time} />}
-        <button onClick={() => this.setState({ showTimer: !this.state.showTimer })}>
-          Show / hide timer
-        </button>
+        {this.state.name && <Component name={this.state.name} />}
+        <button onClick={() => this.setState({ name: 'pedro' })}>Altrar nome</button>
+        <button onClick={() => this.setState({ name: !this.state.name })}>Remover texto</button>
       </div>
     )
   }
