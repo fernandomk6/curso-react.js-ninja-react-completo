@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Component from './component'
+import Button from './button'
 
 class App extends React.Component {
   constructor () {
@@ -49,7 +50,7 @@ class App extends React.Component {
       <div>
         <h1>Olá</h1>
         <Component />
-        <button>Button</button>
+        <Button handleClick={() => console.log('clicou no botão')}>Click aqui</Button>
       </div>
     )
   }
