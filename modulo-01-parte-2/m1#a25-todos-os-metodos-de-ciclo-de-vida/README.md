@@ -216,5 +216,9 @@ Quando um componente é removido do DOM (unmounting) todos os filhos são removi
 também, ou seja, os métodos de desmontagem serão executados em todos
 os filhos também.
 
+## O setState
+
+O método `setState` quando chamado, inicia o ciclo de vida de atualização do componente
+que teve o objeto state alterado.
 
 

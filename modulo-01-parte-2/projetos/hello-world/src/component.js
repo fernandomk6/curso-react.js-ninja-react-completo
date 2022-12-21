@@ -18,18 +18,27 @@ class Component extends React.Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     console.log('shouldComponentUpdate Component')
-    console.log({nextProps, nextState})
+    console.log({
+      nextProps,
+      nextState
+    })
     return true
   }
 
   componentWillUpdate (nextProps, nextState) {
     console.log('componentWillUpdate Component')
-    console.log({nextProps, nextState})
+    console.log({
+      nextProps,
+      nextState
+    })
   }
 
   componentDidUpdate (prevProps, prevState) {
     console.log('componentDidUpdate Component')
-    console.log({prevProps, prevState})
+    console.log({
+      prevProps,
+      prevState
+    })
   }
 
   componentWillUnmount () {
