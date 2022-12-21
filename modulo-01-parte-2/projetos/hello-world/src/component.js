@@ -19,16 +19,17 @@ class Component extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
     console.log('shouldComponentUpdate Component')
     console.log({nextProps, nextState})
-
     return true
   }
 
-  componentWillUpdate () {
+  componentWillUpdate (nextProps, nextState) {
     console.log('componentWillUpdate Component')
+    console.log({nextProps, nextState})
   }
 
-  componentDidUpdate () {
+  componentDidUpdate (prevProps, prevState) {
     console.log('componentDidUpdate Component')
+    console.log({prevProps, prevState})
   }
 
   componentWillUnmount () {
@@ -38,7 +39,7 @@ class Component extends React.Component {
   render () {
     console.log('render Component')
     return (
-      <div>Componente {this.props.name}</div>
+      <div>Componente</div>
     )
   }
 }

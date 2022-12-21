@@ -22,8 +22,20 @@ Quando o elemento react é inserido no DOM, ele é montado.
 
 ### Render
 
-Método que é responsavel por criar/atualizr visualmente o elemento no DOM,
+- É executado sempre que um componente Stateful, tem o valor de seu
+estado alterado.
+
+- É executado sempre que um componente Stateless, tem suas o valor
+de suas props, alterada.
+
+Método que é responsavel por criar/atualizar visualmente o elemento no DOM,
 com base no seu retorno. Deve ser um método puro.
+
+Renderiza o elemento na tela fazendo as inserções / alterações no DOM necessárias.
+
+*O react não renderiza todo o componente a cada alteração mas sim apenas os dados que mudaram (diff)*
+
+*É feito uma comparação do virtualDOM do react com o DOMreal, e apenas o que estiver diferente é atualizado*
 
 ### ComponentDidMount
 
@@ -104,20 +116,37 @@ class App extends React.Component {
     console.log('componentDidMount App')
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log('shouldComponentUpdate App')
+    console.log({nextProps, nextState})
+    return true
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    console.log('componentWillUpdate App')
+    console.log({nextProps, nextState, state: this.state})
+  }
+
+  componentDidUpdate (nextProps, nextState) {
+    console.log('componentDidUpdate App')
+    console.log({nextProps, nextState})
+  }
+
   render () {
     console.log('render App')
+    console.log(this.state.name)
     return (
       <div>
         <h1>Olá</h1>
-        {this.state.name && <Component name={this.state.name} />}
-        <button onClick={() => this.setState({ name: 'pedro' })}>Altrar nome</button>
-        <button onClick={() => this.setState({ name: !this.state.name })}>Remover texto</button>
+        <Component />
+        <button onClick={() => this.setState({ name: 'pedro' })}>Alterar estado</button>
       </div>
     )
   }
 }
 
 export default App
+
 ```
 
 ```js
@@ -144,16 +173,17 @@ class Component extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
     console.log('shouldComponentUpdate Component')
     console.log({nextProps, nextState})
-
     return true
   }
 
-  componentWillUpdate () {
+  componentWillUpdate (nextProps, nextState) {
     console.log('componentWillUpdate Component')
+    console.log({nextProps, nextState})
   }
 
-  componentDidUpdate () {
+  componentDidUpdate (prevProps, prevState) {
     console.log('componentDidUpdate Component')
+    console.log({nextProps, nextState})
   }
 
   componentWillUnmount () {
@@ -163,11 +193,28 @@ class Component extends React.Component {
   render () {
     console.log('render Component')
     return (
-      <div>Componente {this.props.name}</div>
+      <div>Componente</div>
     )
   }
 }
 
 export default Component
+
 ```
+
+## Extra
+
+Quando um componente é renderizado referente a montagem, todos os
+seus filhos são montados também. Ou seja, todos os métodos de ciclo de vida,
+de montagem, são executados nos filhos também.
+
+Quando um componente é renderizado referente a uma atualização, todos os
+seus filhos, seão atualizados também. Ou seja, todos os métodos de ciclo de 
+vida de atualização serão executados no filhos tambpem.
+
+Quando um componente é removido do DOM (unmounting) todos os filhos são removidos
+também, ou seja, os métodos de desmontagem serão executados em todos
+os filhos também.
+
+
 

@@ -20,14 +20,30 @@ class App extends React.Component {
     console.log('componentDidMount App')
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log('shouldComponentUpdate App')
+    console.log({nextProps, nextState})
+    return true
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    console.log('componentWillUpdate App')
+    console.log({nextProps, nextState, state: this.state})
+  }
+
+  componentDidUpdate (nextProps, nextState) {
+    console.log('componentDidUpdate App')
+    console.log({nextProps, nextState})
+  }
+
   render () {
     console.log('render App')
+    console.log(this.state.name)
     return (
       <div>
         <h1>Olá</h1>
-        {this.state.name && <Component name={this.state.name} />}
-        <button onClick={() => this.setState({ name: 'pedro' })}>Altrar nome</button>
-        <button onClick={() => this.setState({ name: !this.state.name })}>Remover texto</button>
+        <Component />
+        <button onClick={() => this.setState({ name: 'pedro' })}>Alterar estado</button>
       </div>
     )
   }
