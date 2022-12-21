@@ -22,4 +22,5 @@ Mounting pode ser entendido como renderizado e unmounting como removido da tela.
 - componentWillReceiveProps(nextProps): Antes de receber novas propriedades
 - shouldComponentUpdate(nextProps, nextState) => bool: Esse método deve dizer se o componente deve
 ou não, ser atualizado
-- 
+- componentWillUpdate(nextProps, nextState): Antes do componente ser atualizado
+- componentDidUpdate(prevProps, prevState): Depois do componente ser atualizado
