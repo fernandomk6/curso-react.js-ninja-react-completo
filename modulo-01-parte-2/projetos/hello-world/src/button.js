@@ -4,10 +4,10 @@ import React from 'react'
 
 class Button extends React.Component {
   render () {
-    console.log('render Button')
-    const { handleClick, children } = this.props
     return (
-      <button onClick={handleClick}>{children}</button>
+      <button onClick={this.props.handleClick}>
+        {this.props.children}
+      </button>
     )
   }
 }
