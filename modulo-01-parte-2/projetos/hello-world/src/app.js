@@ -24,6 +24,7 @@ class App extends React.Component {
               })}
             />
           </label>
+          <button>enviar</button>
         </form>
       </div>
     )
