@@ -75,3 +75,37 @@ class App extends React.Component {
 
 ## Radio
 
+Exemplo de como manipular estado dos elementos radio.
+
+### Exemplo
+
+```js
+// jsx element
+<label>
+  <input
+    type='radio'
+    name='sex'
+    value='male'
+    checked={this.state.sex === 'male'}
+    onChange={this.handleChangeSex}
+  />
+  <span>Masculino</span>
+</label>
+<label>
+  <input
+    type='radio'
+    name='sex'
+    value='female'
+    checked={this.state.sex === 'female'}
+    onChange={this.handleChangeSex}
+  />
+  <span>Feminino</span>
+</label>
+
+// handler
+handleChangeSex (e) {
+  const { value: sex } = e.target
+  this.setState({ sex })
+}
+```
+
