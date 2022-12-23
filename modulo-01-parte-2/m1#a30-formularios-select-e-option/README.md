@@ -3,7 +3,7 @@
 Um select controlado se caracteriza pela existência da prop `value`,
 existente na tag `select`, desta maneira:
 
-## Controlled component select
+## Controlled component (select-one)
 
 ```js
 <select value={0}>
@@ -61,7 +61,7 @@ class App extends React.Component {
 }
 ```
 
-## Multiple
+## Multiple (select-multiple)
 
 É possivel habilitar a seleção de múltiplos options. Vejamos um exemplo:
 
