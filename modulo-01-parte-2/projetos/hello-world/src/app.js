@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      initialText: 'Olá eu me chamo...'
+      showContent: false
     }
   }
 
@@ -14,18 +14,17 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World</h1>
-        <form>
-          <label>
-            Sua história
-            <textarea
-              value={this.state.initialText}
-              onChange={(e) => this.setState({
-                initialText: e.target.value
-              })}
-            />
-          </label>
-          <button>enviar</button>
-        </form>
+        <label>
+          <input
+            type='checkbox'
+            checked={this.state.showContent}
+            onChange={(e) => this.setState({
+              showContent: e.target.checked
+            })}
+          /> Mostrar conteúdo
+        </label>
+
+        {this.state.showContent && <div>Olha eu aqui</div>}
       </div>
     )
   }
