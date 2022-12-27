@@ -3,7 +3,7 @@
 O vídeo de referência para esse conteúdo foi tirado do canal
 [queroser.ninja - Fernando Daciuk](https://www.youtube.com/@queroserninja)
 
-[Vídeo de refência](https://www.youtube.com/watch?v=yb-fBApqWSw)
+[Vídeo de referência](https://www.youtube.com/watch?v=yb-fBApqWSw)
 
 ## Vamos criar nosso próprio useState
 
