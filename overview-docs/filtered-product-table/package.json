@@ -1,5 +1,5 @@
 {
-  "name": "filterable-product-table",
+  "name": "filtered-product-table",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
