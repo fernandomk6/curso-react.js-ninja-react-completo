@@ -61,3 +61,5 @@ algumas informações entre as renderizações
 - O estado é privado para o componente. Se você renderizar em dois lugares, cada 
 cópia terá seu próprio estado.
 
+- Definir o estado solicita uma nova renderização.
+- O React armazena o estado fora do seu componente, como se estivesse em uma prateleira.
