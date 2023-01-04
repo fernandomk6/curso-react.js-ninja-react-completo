@@ -248,3 +248,6 @@ são usadas para armazenar referências a objetos do DOM para ações não destr
 - Refs com nos dom são válidos apenas para elementos HTML e não componentes, para obter a referência
 de um componente use `forwardRef`
 - Nunca altere o dom diretamente com refs
+- Use forwardRef função importada do react para poder obter referencia do no de um
+componente
+- Use flushSync para executar alterações de state de forma síncrona
