@@ -278,3 +278,139 @@ Isso garante que essa lógica seja executada apenas uma vez após o navegador ca
 
 ## Juntando tudo
 
+- O array de dependências geralmente conterá props e states
+- No ambiente de desenvolvimento, os componentes são desmontados
+imediatamente apos a montagem inicial, e logo em seguida montados novamente.
+Isso existe para que o react possa idêntificar bugs.
+- Todas as vezes antes do efeito ser executado, a função de limpeza é executada
+e após o componentes ser desmontado, a função de limpeza é executada também.
+- A função de limpeza deve parar ou desfazer o que o efeito fez. Deve limpar dados
+da memória, desconectar, limpar coisas.
+- Se o seu efeito adiciona animação, a função de limpeza, deve resetar a animação para
+o estado inicial.
+- Você pode usar uma let para controlar quando um efeito vai atualizar algum estado.
+- Lembre-se que é interessante setar valores no localStorage para evitar novos
+requests e novos processamentos. Se os dados podem ser armazenados e não serão mudados,
+armezene-os no localStorage e obtenha eles do localStorage quando necessário.
+- Se alguma lógica precisa ser executada apenas quando o aplicativo iniciar, não use
+efeitos, mas coloque a sua lógica fora dos seus componentes. Na própria raiz dos
+arquivos JS.
+
+## Recapitular
+
+- Os efeitos são causados pela própria renderização. Pode se entender como "efeitos da renderização".
+- Os efeitos permitem sincronizar um componente com alguma api externa.
+- Por padrão os efeitos são executados a cada renderização
+- O react irá "pular" a execução do efeito, caso todos os itens no array de elementos tenha
+o mesmo valor da renderização anterior.
+- Um array de dependências vazio, significa que o efeito será executado apenas durante
+a montagem do componente, ou seja, apenas em sua primeira renderização.
+- React em ambiente de desenvolvimento remonta seus componentes apos a montagem para testar
+os efeitos.
+- Se o seu efeito quebrar durante a remontagem, você precisa implementar uma função de limpeza.
+- O react executará a função de limpeza antes de executar o efeito e também executará a função de limpeza
+depois de desmontar o componente, ou seja, de remove-lo do dom.
+- Os efeitos colateral devem ser feitos dentro de um manipulador de evento ou devem ser
+um efeito.
+
+
+## Altamente importante, efeito e fetchs paralelos
+
+Você deseja apenas ter um fetch sendo executado por vez ao fazer um fetch. Por esse motivo
+você deve limpar o fetch anterior antes de fazer uma nova requisição, porém não é simples fazer isso.
+O react propõe a seguinte solução:
+
+```js
+import { useState, useEffect } from 'react';
+import { fetchBio } from './api.js';
+
+export default function Page() {
+  const [person, setPerson] = useState('Alice');
+  const [bio, setBio] = useState(null);
+
+  useEffect(() => {
+    // Essa 
+    let ignore = false;
+    setBio(null);
+
+    fetchBio(person).then(result => {
+      // E essa
+      if (!ignore) {
+        setBio(result);
+      }
+    });
+
+    // Decore essa lógica
+    return () => {
+      ignore = true;
+    }
+  }, [person]);
+
+  return (
+    <>
+      <select value={person} onChange={e => {
+        setPerson(e.target.value);
+      }}>
+        <option value="Alice">Alice</option>
+        <option value="Bob">Bob</option>
+        <option value="Taylor">Taylor</option>
+      </select>
+      <hr />
+      <p><i>{bio ?? 'Loading...'}</i></p>
+    </>
+  );
+}
+```
+
+A mudança de estado so vai ser executada se `ignore` for false.
+Sempre antes do efeito ser executado, a sua função de limpeza é executada.
+A função de limpeza seta a ignore como true. Ou seja, quando o callback do then
+for executado, se a let ignore tiver armazenando true, o estado não será alterado.
+Isso significa que, existe dois requests paralelos.
+
+Cada efeito tem a sua própria ignore variável. Se a função de limpeza for executada,
+antes do callback do then ser chamado, a sua let é alterada e o estado não será alterado.
+
+E a função de limpeza só será executada se um novo efeito for acionado. Dessa forma.
+Você garante que o efeito acionado assíncronamente antes, não alterará o estado, pois
+a sua let variável teve o seu valor alterado. 
+
+```js
+useEffect(() => {
+  let ignore = false
+  setBio(null);
+  fetchBio(person).then(result => {
+    if (ignore) {
+      return
+    }
+    
+    setBio(result);
+  });
+  // se executado a limpeza, a atualização de estado não será feita
+  // clousures!
+  return () => ignore = true
+}, [person]);
+```
+
+Veja outro exemplo:
+
+```js
+useEffect(() => {
+  let ignore = false;
+
+  async function startFetching() {
+    const json = await fetchTodos(userId);
+    // so será executado o bloco do if caso, a let não tenha sido alterada
+    // ou melhor, caso a função de limpeza não tenha sido executada
+    if (!ignore) {
+      setTodos(json);
+    }
+  }
+
+  startFetching();
+
+  return () => {
+    ignore = true;
+  };
+}, [userId]);
+```
